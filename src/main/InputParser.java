@@ -3,6 +3,8 @@ package main;
 import java.util.HashMap;
 import java.util.Map;
 
+import requests.Request;
+
 public abstract class InputParser {
 
 	public static Request createRequest(String req) {

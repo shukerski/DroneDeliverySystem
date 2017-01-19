@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import drone.DroneManager;
 import product.Product;
+import requests.Request;
+import requests.RequestManager;
 import warehouse.Warehouse;
 import warehouse.WarehouseManager;
 
@@ -13,7 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 		DroneManager dm = new DroneManager();
 		dm.drones.get(2).setIsFlying(true);
-		System.out.println(dm.canDeliver(900, 1499));
+//		System.out.println(dm.canDeliver(900, 1499));
 //		System.out.println("Super fast drone delivery system!");
 
 		Scanner input = new Scanner(System.in);
@@ -22,10 +24,10 @@ public class Main {
 
 		Request request = InputParser.createRequest(req);
 		
-		System.out.println(request.getId());
-		System.out.println(request.getReqX());
-		System.out.println(request.getReqY());
-		System.out.println(request.getProductsToDeliver());
+//		System.out.println(request.getId());
+//		System.out.println(request.getReqX());
+//		System.out.println(request.getReqY());
+//		System.out.println(request.getProductsToDeliver());
 		
 		Warehouse w = new Warehouse(42, 42);
 		w.addProduct(new Product(1, "Waffle", 1), 20);
@@ -36,5 +38,6 @@ public class Main {
 		System.out.println(wm.hasRequestedProducts(request.getProductsToDeliver()));
 		System.out.println(wm.calculateTotalWeight(request.getProductsToDeliver()));
 		
+		System.out.println(RequestManager.canExecuteRequest(request, wm, dm));
 	}
 }
