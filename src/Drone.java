@@ -7,7 +7,6 @@ public class Drone {
 	private boolean isFlying;
 	
 	public Drone(int id, int battery, double capacity, int chargingRate, boolean isFlying) {
-		super();
 		this.id = id;
 		this.battery = battery;
 		this.capacity = capacity;
