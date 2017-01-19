@@ -1,11 +1,9 @@
 package warehouse;
-import java.util.List;
-
-import product.Product;
+import java.util.Map;
 
 public interface WarehouseManagerInterface {
 	
-	public List<Product> getAvailableProducts();
+	public Map<Integer, Integer> getAvailableProducts();
 	
 	public double calculateDistance(int targetX , int targetY);
 	

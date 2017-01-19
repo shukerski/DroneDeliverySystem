@@ -1,7 +1,5 @@
 package warehouse;
-import java.util.List;
-
-import product.Product;
+import java.util.Map;
 
 public class WarehouseManager implements WarehouseManagerInterface {
 
@@ -13,7 +11,7 @@ public class WarehouseManager implements WarehouseManagerInterface {
 	}
 
 	@Override
-	public List<Product> getAvailableProducts() {
+	public Map<Integer, Integer> getAvailableProducts() {
 		return warehouse.getProducts();
 	}
 

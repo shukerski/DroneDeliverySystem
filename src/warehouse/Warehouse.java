@@ -1,28 +1,26 @@
 package warehouse;
-import java.util.ArrayList;
-import java.util.List;
-
-import product.Product;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Warehouse {
 
 	private int id;
 	private int x;
 	private int y;
-	private List<Product> products;
+	private Map<Integer, Integer> products = new HashMap<>();
 
 	public Warehouse(int x, int y) {
 		super();
 		this.x = x;
 		this.y = y;
-		this.products = new ArrayList<Product>();
+		
 	}
 
-	public Warehouse(int x, int y, List<Product> products) {
+	public Warehouse(int x, int y, Map<Integer, Integer> products) {
 		super();
 		this.x = x;
 		this.y = y;
-		this.products = new ArrayList<>(products);
+		this.products = products;
 	}
 
 	public int getId() {
@@ -49,8 +47,12 @@ public class Warehouse {
 		this.y = y;
 	}
 	
-	public List<Product> getProducts() {
+	public Map<Integer, Integer> getProducts() {
 		return products;
+	}
+	
+	public void addProduct(int id, int quantity) {
+		products.put(id, quantity);
 	}
 
 }
