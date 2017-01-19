@@ -16,7 +16,6 @@ public class DroneManager {
 	public boolean canDeliver(int distance, double weight) {
 		String message = "Using drones: ";
 		for (DefaultDrone drone : drones) {
-			
 			if (drone.getIsFlying() == false && drone.getBattery() >= distance * 2) {
 				message += drone.getId() + ", ";
 				weight -= drone.getCapacity();
@@ -26,6 +25,8 @@ public class DroneManager {
 				System.out.println(message);
 				return true;
 			}
+			
+			
 		}
 		return false;
 	}
