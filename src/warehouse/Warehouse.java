@@ -2,26 +2,31 @@ package warehouse;
 import java.util.HashMap;
 import java.util.Map;
 
+import product.Product;
+
 public class Warehouse {
 
 	private int id;
 	private int x;
 	private int y;
-	private Map<Integer, Integer> products = new HashMap<>();
+	private Map<Integer, Integer> productsQuantity;
+
+	private Map<Integer, Product> products;
 
 	public Warehouse(int x, int y) {
-		super();
+		this.productsQuantity = new HashMap<>();
+		this.products = new HashMap<>();
 		this.x = x;
 		this.y = y;
 		
 	}
 
-	public Warehouse(int x, int y, Map<Integer, Integer> products) {
-		super();
-		this.x = x;
-		this.y = y;
-		this.products = products;
-	}
+//	public Warehouse(int x, int y, Map<Integer, Integer> productsQuantity) {
+//		super();
+//		this.x = x;
+//		this.y = y;
+//		this.productsQuantity = products;
+//	}
 
 	public int getId() {
 		return id;
@@ -47,12 +52,17 @@ public class Warehouse {
 		this.y = y;
 	}
 	
-	public Map<Integer, Integer> getProducts() {
+	public Map<Integer, Product> getProducts() {
 		return products;
 	}
 	
-	public void addProduct(int id, int quantity) {
-		products.put(id, quantity);
+	public Map<Integer, Integer> getProductsQuantity() {
+		return productsQuantity;
+	}
+	
+	public void addProduct(Product product, int quantity) {
+		productsQuantity.put(product.getId(), quantity);
+		products.put(product.getId(), product);
 	}
 
 }
