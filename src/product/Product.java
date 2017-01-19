@@ -1,3 +1,4 @@
+package product;
 
 public class Product {
 	private int id;

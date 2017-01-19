@@ -1,3 +1,4 @@
+package main;
 import java.util.Map;
 
 public class Request {
@@ -8,6 +9,7 @@ public class Request {
 	private Map<Integer,Integer> productsToDeliver;
 	
 	public Request(String request) {
+		super();
 		
 	}
 	

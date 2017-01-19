@@ -1,5 +1,8 @@
+package warehouse;
 import java.util.ArrayList;
 import java.util.List;
+
+import product.Product;
 
 public class Warehouse {
 

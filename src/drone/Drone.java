@@ -1,3 +1,4 @@
+package drone;
 
 public class Drone {
 	private int id;

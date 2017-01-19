@@ -1,4 +1,7 @@
+package warehouse;
 import java.util.List;
+
+import product.Product;
 
 public class WarehouseManager implements WarehouseManagerInterface {
 
