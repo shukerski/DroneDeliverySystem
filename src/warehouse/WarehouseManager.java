@@ -1,6 +1,5 @@
 package warehouse;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
 
 import product.Product;
