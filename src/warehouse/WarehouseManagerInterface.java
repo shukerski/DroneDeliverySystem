@@ -2,14 +2,15 @@ package warehouse;
 import java.util.Map;
 
 import product.Product;
+import requests.Request;
 
 public interface WarehouseManagerInterface {
 	
-	public Map<Integer, Product> getAvailableProducts();
+	public Map<Integer, Product> getAvailableProducts(Warehouse w);
+	public double calculateDistance(Warehouse w, int targetX , int targetY);
+	public double calculateTotalWeight(Warehouse w, Map<Integer, Integer> productsToDeliver);
+	public Warehouse checkWarehouses(Request r);
 	
-	public double calculateDistance(int targetX , int targetY);
-	public boolean hasRequestedProducts(Map<Integer, Integer> productsToDeliver);
-	public double calculateTotalWeight(Map<Integer, Integer> productsToDeliver);
 	
 
 }

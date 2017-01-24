@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import drone.DroneManager;
@@ -30,13 +31,15 @@ public class Main {
 //		System.out.println(request.getProductsToDeliver());
 		
 		Warehouse w = new Warehouse(42, 42);
+		Warehouse w2 = new Warehouse(420, 420);
+		ArrayList<Warehouse> warehouses = new ArrayList<>();
+		warehouses.add(w);
+		warehouses.add(w2);
 		w.addProduct(new Product(1, "Waffle", 1), 20);
-		w.addProduct(new Product(2, "Cola", 2), 50);
+		w2.addProduct(new Product(2, "Cola", 2), 50);
 		
-		WarehouseManager wm = new WarehouseManager(w);
+		WarehouseManager wm = new WarehouseManager(warehouses);
 		
-		System.out.println(wm.hasRequestedProducts(request.getProductsToDeliver()));
-		System.out.println(wm.calculateTotalWeight(request.getProductsToDeliver()));
 		
 		System.out.println(RequestManager.canExecuteRequest(request, wm, dm));
 	}

@@ -25,19 +25,19 @@ public class Request {
 		this.id = id;
 	}
 
-	public int getReqX() {
+	public int getX() {
 		return reqX;
 	}
 
-	public void setReqX(int reqX) {
+	public void setX(int reqX) {
 		this.reqX = reqX;
 	}
 
-	public int getReqY() {
+	public int getY() {
 		return reqY;
 	}
 
-	public void setReqY(int reqY) {
+	public void setY(int reqY) {
 		this.reqY = reqY;
 	}
 

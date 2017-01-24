@@ -9,13 +9,13 @@ public class Warehouse {
 	private int id;
 	private int x;
 	private int y;
-	private Map<Integer, Integer> productsQuantity;
+	private Map<Integer, Integer> productsIdToQuantity;
 
-	private Map<Integer, Product> products;
+	private Map<Integer, Product> productsIdToProduct;
 
 	public Warehouse(int x, int y) {
-		this.productsQuantity = new HashMap<>();
-		this.products = new HashMap<>();
+		this.productsIdToQuantity = new HashMap<>();
+		this.productsIdToProduct = new HashMap<>();
 		this.x = x;
 		this.y = y;
 		
@@ -53,16 +53,32 @@ public class Warehouse {
 	}
 	
 	public Map<Integer, Product> getProducts() {
-		return products;
+		return productsIdToProduct;
 	}
 	
 	public Map<Integer, Integer> getProductsQuantity() {
-		return productsQuantity;
+		return productsIdToQuantity;
 	}
 	
 	public void addProduct(Product product, int quantity) {
-		productsQuantity.put(product.getId(), quantity);
-		products.put(product.getId(), product);
+		productsIdToQuantity.put(product.getId(), quantity);
+		productsIdToProduct.put(product.getId(), product);
+	}
+	
+	public boolean checkAvailability(Map<Integer, Integer> idToQuantity) {
+		for (Integer id : idToQuantity.keySet()) {
+			if(this.getProductsQuantity().get(id) == null || this.getProductsQuantity().get(id) < idToQuantity.get(id)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public void update(Map<Integer, Integer> idToQuantity) {
+		for (Integer id : idToQuantity.keySet()) {
+			int newValue = getProductsQuantity().get(id) - idToQuantity.get(id);
+			this.getProductsQuantity().put(id, newValue);
+		}
 	}
 
 }

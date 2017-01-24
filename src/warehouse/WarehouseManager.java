@@ -1,48 +1,54 @@
 package warehouse;
+import java.util.ArrayList;
+
 import java.util.Map;
 
 import product.Product;
+import requests.Request;
 
 public class WarehouseManager implements WarehouseManagerInterface {
 
-	private Warehouse warehouse;
+	private ArrayList<Warehouse> warehouses;
 
-	public WarehouseManager(Warehouse warehouse) {
-		this.warehouse = warehouse;
+	public WarehouseManager(ArrayList<Warehouse> warehouses) {
+		this.warehouses = warehouses;
 	}
 
 	@Override
-	public Map<Integer, Product> getAvailableProducts() {
-		return warehouse.getProducts();
+	public Map<Integer, Product> getAvailableProducts(Warehouse w) {
+		return w.getProducts();
 	}
 
 	@Override
-	public double calculateDistance(int targetX, int targetY) {
-		return Math.sqrt(Math.pow((targetX - warehouse.getX()), 2))
-				+ Math.sqrt(Math.pow((targetY - warehouse.getY()), 2));
+	public double calculateDistance(Warehouse w, int targetX, int targetY) {
+		return Math.sqrt(Math.pow((targetX - w.getX()), 2))
+				+ Math.sqrt(Math.pow((targetY - w.getY()), 2));
 	}
 
 	@Override
-	public double calculateTotalWeight(Map<Integer, Integer> productsToDeliver) {
+	public double calculateTotalWeight(Warehouse w, Map<Integer, Integer> productsToDeliver) {
 		double weight = 0;
-		boolean hasAvailable = hasRequestedProducts(productsToDeliver);
-		if(hasAvailable) {
-			for (Integer id : productsToDeliver.keySet()) {
-				weight += warehouse.getProducts().get(id).getWeight() * productsToDeliver.get(id);
-			}
+		for (Integer id : productsToDeliver.keySet()) {
+			weight += w.getProducts().get(id).getWeight() * productsToDeliver.get(id);
 		}
 		return weight;
 	}
 
 	@Override
-	public boolean hasRequestedProducts(Map<Integer, Integer> productsToDeliver) {
-		for (Integer id : productsToDeliver.keySet()) {
-			if(warehouse.getProductsQuantity().get(id) == null || warehouse.getProductsQuantity().get(id) < productsToDeliver.get(id)) {
-				return false;
+	/**
+	 * Checks availability of the requested product in every warehouse.
+	 * 
+	 * returns Warehouse id
+	 */
+	public Warehouse checkWarehouses(Request r) {
+		for(Warehouse w: warehouses) {
+			if(w.checkAvailability(r.getProductsToDeliver())) {
+				return w;
 			}
 		}
-		return true;
+		return null;
 	}
+	
 	
 	
 
