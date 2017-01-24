@@ -10,6 +10,7 @@ public interface WarehouseManagerInterface {
 	public double calculateDistance(Warehouse w, int targetX , int targetY);
 	public double calculateTotalWeight(Warehouse w, Map<Integer, Integer> productsToDeliver);
 	public Warehouse checkWarehouses(Request r);
+	public void supply(Request r);
 	
 	
 

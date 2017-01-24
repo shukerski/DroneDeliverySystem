@@ -3,7 +3,6 @@ package requests;
 import java.util.Map;
 
 public class Request {
-
 	private int id;
 	private RequestType type;
 	private int reqX;

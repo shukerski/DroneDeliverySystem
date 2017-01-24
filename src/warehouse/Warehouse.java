@@ -3,6 +3,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import product.Product;
+import requests.Request;
+import requests.RequestType;
 
 public class Warehouse {
 
@@ -74,9 +76,14 @@ public class Warehouse {
 		return true;
 	}
 	
-	public void update(Map<Integer, Integer> idToQuantity) {
-		for (Integer id : idToQuantity.keySet()) {
-			int newValue = getProductsQuantity().get(id) - idToQuantity.get(id);
+	public void update(Request r) {
+		for (Integer id : r.getProductsToDeliver().keySet()) {
+			int newValue;
+			if(r.getType().equals(RequestType.DELIVERY)) {
+				newValue = getProductsQuantity().get(id) - r.getProductsToDeliver().get(id);
+			} else {
+				newValue = getProductsQuantity().get(id) + r.getProductsToDeliver().get(id);
+			}
 			this.getProductsQuantity().put(id, newValue);
 		}
 	}

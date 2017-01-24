@@ -1,6 +1,6 @@
 package warehouse;
 import java.util.ArrayList;
-
+import java.util.Iterator;
 import java.util.Map;
 
 import product.Product;
@@ -38,7 +38,7 @@ public class WarehouseManager implements WarehouseManagerInterface {
 	/**
 	 * Checks availability of the requested product in every warehouse.
 	 * 
-	 * returns Warehouse id
+	 * @return Warehouse id
 	 */
 	public Warehouse checkWarehouses(Request r) {
 		for(Warehouse w: warehouses) {
@@ -47,6 +47,16 @@ public class WarehouseManager implements WarehouseManagerInterface {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void supply(Request r) {
+		int warehouseId = r.getId();
+		for (Warehouse warehouse : warehouses) {
+			if(warehouse.getId() == warehouseId) {
+				warehouse.update(r);
+			}
+		}
 	}
 	
 	
