@@ -14,7 +14,7 @@ public class RequestManager {
 			weight = wm.calculateTotalWeight(w, request.getProductsToDeliver());
 			canExecute = dm.canDeliver(distance, weight);
 			if(canExecute) {
-				w.update(request.getProductsToDeliver());
+				w.update(request);
 			}
 		}
 		return canExecute;
