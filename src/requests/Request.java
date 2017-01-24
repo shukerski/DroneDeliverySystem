@@ -5,16 +5,26 @@ import java.util.Map;
 public class Request {
 
 	private int id;
+	private RequestType type;
 	private int reqX;
 	private int reqY;
 	private Map<Integer, Integer> productsToDeliver;
-	
-	public Request(int id, int x, int y, Map<Integer, Integer> products) {
+
+	public Request(int id, RequestType type, int x, int y, Map<Integer, Integer> products) {
 		super();
 		this.id = id;
+		this.type = type;
 		this.reqX = x;
 		this.reqY = y;
 		this.productsToDeliver = products;
+	}
+
+	public RequestType getType() {
+		return type;
+	}
+
+	public void setType(RequestType type) {
+		this.type = type;
 	}
 
 	public int getId() {
