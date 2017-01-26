@@ -3,6 +3,7 @@ package drone;
 public class Drone {
 	private int id;
 	private int battery;
+	private int maxBattery;
 	private double capacity;
 	private int chargingRate;
 	private int warehouseID;
@@ -11,6 +12,7 @@ public class Drone {
 	public Drone(int id, int battery, double capacity, int chargingRate, int warehouseId, long availableTime) {
 		this.id = id;
 		this.battery = battery;
+		this.maxBattery = battery;
 		this.capacity = capacity;
 		this.chargingRate = chargingRate;
 		this.warehouseID = warehouseId;
@@ -32,7 +34,11 @@ public class Drone {
 	public void setBattery(int battery) {
 		this.battery = battery;
 	}
-
+	
+	public int getMaxBattery() {
+		return maxBattery;
+	}
+	
 	public double getCapacity() {
 		return capacity;
 	}
@@ -69,8 +75,10 @@ public class Drone {
 		this.setBattery(this.getBattery() - distance * 2);
 	}
 
-	public void charge(int minute) {
-		return;
+	public long chargingTime() {
+		int neededBattery = this.getMaxBattery() - this.getBattery();
+		int minutes = neededBattery / this.getChargingRate();
+		return minutes * 60;
 	}
 
 }

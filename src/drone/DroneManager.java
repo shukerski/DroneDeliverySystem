@@ -1,6 +1,7 @@
 package drone;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class DroneManager {
 	private ArrayList<Drone> drones = new ArrayList<>();
@@ -19,22 +20,29 @@ public class DroneManager {
 
 	}
 
-	public boolean canDeliver(double distance, double weight) {
-		String message = "Using drones: ";
+	public ArrayList<Drone> gerDeliveryDrones(double distance, double weight, long time, int warehouseID) {
+		ArrayList<Drone> deliveryDrones = new ArrayList<>();
 		for (Drone drone : drones) {
 			// todo available time
-			if (drone.getBattery() >= distance * 2) {
-				message += drone.getId() + " ";
+			if (time > drone.getAvailableTime() && drone.getBattery() >= distance * 2 && drone.getWarehouseID() == warehouseID) {
+				deliveryDrones.add(drone);
 				weight -= drone.getCapacity();
 			}
 
 			if (weight < 0) {
-				System.out.println(message);
-				return true;
+				return deliveryDrones;
 			}
 
 		}
-		return false;
+		return null;
+	}
+	
+	public void updateDroneTimes(ArrayList<Drone> deliveryDrones, double distance, long time) {
+		for (Drone drone : deliveryDrones) {
+			drone.setBattery(drone.getBattery() - (int)(distance * 2));
+			drone.setAvailableTime(time + (long)distance * 2 * 60 +  drone.chargingTime());
+			drone.setBattery(drone.getMaxBattery());
+		}
 	}
 
 }
