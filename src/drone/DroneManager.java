@@ -20,7 +20,7 @@ public class DroneManager {
 
 	}
 
-	public ArrayList<Drone> gerDeliveryDrones(double distance, double weight, long time, int warehouseID) {
+	public ArrayList<Drone> getDeliveryDrones(double distance, double weight, long time, int warehouseID) {
 		ArrayList<Drone> deliveryDrones = new ArrayList<>();
 		for (Drone drone : drones) {
 			// todo available time
