@@ -5,56 +5,72 @@ public class Drone {
 	private int battery;
 	private double capacity;
 	private int chargingRate;
-	private boolean isFlying;
-	
-	public Drone(int id, int battery, double capacity, int chargingRate, boolean isFlying) {
+	private int warehouseID;
+	private long availableTime;
+
+	public Drone(int id, int battery, double capacity, int chargingRate, int warehouseId, long availableTime) {
 		this.id = id;
 		this.battery = battery;
 		this.capacity = capacity;
 		this.chargingRate = chargingRate;
-		this.isFlying = isFlying;
+		this.warehouseID = warehouseId;
+		this.availableTime = availableTime;
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getBattery() {
 		return battery;
 	}
+
 	public void setBattery(int battery) {
 		this.battery = battery;
 	}
+
 	public double getCapacity() {
 		return capacity;
 	}
+
 	public void setCapacity(double capacity) {
 		this.capacity = capacity;
 	}
+
 	public int getChargingRate() {
 		return chargingRate;
 	}
+
 	public void setChargingRate(int chargingRate) {
 		this.chargingRate = chargingRate;
 	}
-	public boolean getIsFlying() {
-		return isFlying;
+
+	public int getWarehouseID() {
+		return warehouseID;
 	}
-	public void setIsFlying(boolean isFlying) {
-		this.isFlying = isFlying;
+
+	public void setWarehouseID(int warehouseID) {
+		this.warehouseID = warehouseID;
 	}
-	
-	
+
+	public long getAvailableTime() {
+		return availableTime;
+	}
+
+	public void setAvailableTime(long availableTime) {
+		this.availableTime = availableTime;
+	}
+
 	public void fly(int distance) {
 		this.setBattery(this.getBattery() - distance * 2);
 	}
-	
+
 	public void charge(int minute) {
 		return;
 	}
-	
 
 }
