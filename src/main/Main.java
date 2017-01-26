@@ -1,7 +1,7 @@
 package main;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import drone.DroneManager;
 import product.Product;
@@ -36,7 +36,10 @@ public class Main {
 		Request request = InputParser.createRequest(req);
 
 		
-		
 		System.out.println(RequestManager.canExecuteRequest(request, wm, dm));
+
+		LocalDate date = LocalDate.now();
+		System.out.println(date);
+	
 	}
 }
