@@ -1,6 +1,5 @@
 package main;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import drone.DroneManager;
@@ -30,17 +29,20 @@ public class Main {
 
 		WarehouseManager wm = new WarehouseManager(warehouses);
 		DroneManager dm = new DroneManager();
-		RequestManager rm = new RequestManager();
+		RequestManager rm = new RequestManager(wm, dm);
 
 		Request req1 = InputParser.createRequest(req);
 		Request req2 = InputParser.createRequest(req);
+
 		rm.addRequest(req1);
 		rm.addRequest(req2);
-
-		System.out.println(rm.canExecuteRequest(wm, dm));
-
-		LocalDate date = LocalDate.now();
-		System.out.println(date);
+		
+		Warehouse x = wm.checkWarehouses(req1);
+		double distance = wm.calculateDistance(x, req1.getX(), req1.getY());
+		double weight = wm.calculateTotalWeight(w, req1.getProductsToDeliver());
+		//dm.getDeliveryDrones(distance, weight, time, x.getId());
+		
+		System.out.println(rm.canExecuteRequest());
 
 	}
 }

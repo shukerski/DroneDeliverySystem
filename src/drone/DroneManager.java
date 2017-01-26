@@ -1,7 +1,6 @@
 package drone;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class DroneManager {
 	private ArrayList<Drone> drones = new ArrayList<>();

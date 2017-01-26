@@ -9,9 +9,12 @@ import warehouse.WarehouseManager;
 public class RequestManager {
 
 	private Queue<Request> requests;
+	private DroneManager dm;
+	private WarehouseManager wm;
 
-	public RequestManager() {
-		// TODO Auto-generated constructor stub
+	public RequestManager(WarehouseManager wm, DroneManager dm) {
+		this.dm = dm;
+		this.wm = wm;
 	}
 
 	public void addRequest(Request r) {
@@ -21,8 +24,12 @@ public class RequestManager {
 	public boolean hasRequests() {
 		return requests.isEmpty();
 	}
+	
+	public void executeRequest() {
+		
+	}
 
-	public boolean canExecuteRequest(WarehouseManager wm, DroneManager dm) {
+	public boolean canExecuteRequest() {
 
 		Request request = requests.poll();
 
