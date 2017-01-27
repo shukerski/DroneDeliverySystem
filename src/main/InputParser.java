@@ -1,5 +1,6 @@
 package main;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +27,11 @@ public abstract class InputParser {
 				}
 				
 				int reqID = Integer.valueOf(parts[1]);
-
+				
+				
+				String date = parts[2] + " " + parts[3];
+				//Date
+				
 				String coordinates = parts[4];
 				String[] coordParts = coordinates.split(",");
 				int targetcoordX = Integer.valueOf(coordParts[0]);

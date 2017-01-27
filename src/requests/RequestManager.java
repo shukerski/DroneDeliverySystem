@@ -27,25 +27,26 @@ public class RequestManager {
 	
 	public void executeRequest() {
 		
+		
 	}
 
-	public boolean canExecuteRequest() {
-
-		Request request = requests.poll();
-
-		Warehouse w = wm.checkWarehouses(request);
-		double weight = 0, distance = 0;
-		boolean canExecute = false;
-		if (w != null) {
-			distance = wm.calculateDistance(w, request.getX(), request.getY());
-			weight = wm.calculateTotalWeight(w, request.getProductsToDeliver());
-			canExecute = dm.canDeliver(distance, weight);
-			if (canExecute) {
-				w.update(request);
-			}
-		}
-
-		return canExecute;
-	}
+//	public boolean canExecuteRequest() {
+//
+//		Request request = requests.poll();
+//
+//		Warehouse w = wm.checkWarehouses(request);
+//		double weight = 0, distance = 0;
+//		boolean canExecute = false;
+//		if (w != null) {
+//			distance = wm.calculateDistance(w, request.getX(), request.getY());
+//			weight = wm.calculateTotalWeight(w, request.getProductsToDeliver());
+//			canExecute = dm.canDeliver(distance, weight);
+//			if (canExecute) {
+//				w.update(request);
+//			}
+//		}
+//
+//		return canExecute;
+//	}
 
 }

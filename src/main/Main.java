@@ -33,16 +33,13 @@ public class Main {
 
 		Request req1 = InputParser.createRequest(req);
 		Request req2 = InputParser.createRequest(req);
-
+		
 		rm.addRequest(req1);
 		rm.addRequest(req2);
 		
 		Warehouse x = wm.checkWarehouses(req1);
 		double distance = wm.calculateDistance(x, req1.getX(), req1.getY());
 		double weight = wm.calculateTotalWeight(w, req1.getProductsToDeliver());
-		//dm.getDeliveryDrones(distance, weight, time, x.getId());
 		
-		System.out.println(rm.canExecuteRequest());
-
 	}
 }
