@@ -11,7 +11,4 @@ public interface WarehouseManagerInterface {
 	public double calculateTotalWeight(Warehouse w, Map<Integer, Integer> productsToDeliver);
 	public Warehouse checkWarehouses(Request r);
 	public void supply(Request r);
-	
-	
-
 }

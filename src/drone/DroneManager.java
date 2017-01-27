@@ -23,9 +23,8 @@ public class DroneManager {
 	public ArrayList<Drone> getDeliveryDrones(double distance, double weight, long time, int warehouseID) {
 		ArrayList<Drone> deliveryDrones = new ArrayList<>();
 		for (Drone drone : drones) {
-			if ((time > drone.getAvailableTime()) && 
-					(drone.getBattery() >= distance * 2) && 
-					(drone.getWarehouseID() == warehouseID)) {
+			if ((time > drone.getAvailableTime()) && (drone.getBattery() >= distance * 2)
+					&& (drone.getWarehouseID() == warehouseID)) {
 				deliveryDrones.add(drone);
 				weight -= drone.getCapacity();
 			}
@@ -36,11 +35,11 @@ public class DroneManager {
 		}
 		return null;
 	}
-	
+
 	public void updateDroneTimes(ArrayList<Drone> deliveryDrones, double distance, long time) {
 		for (Drone drone : deliveryDrones) {
-			drone.setBattery(drone.getBattery() - (int)(distance * 2));
-			drone.setAvailableTime(time + (long)(distance / 8) * 60 +  drone.chargingTime());
+			drone.setBattery(drone.getBattery() - (int) (distance * 2));
+			drone.setAvailableTime(time + (long) (distance * 2) * 60 + drone.chargingTime());
 			drone.setBattery(drone.getMaxBattery());
 		}
 	}

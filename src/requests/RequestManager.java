@@ -37,8 +37,16 @@ public class RequestManager {
 	}
 
 	public void executeRequest(ArrayList<Drone> deliveryDrones, double distance, long dateTime, Warehouse w) {
+		long eta = dateTime + (long) (distance) * 60;
+		System.out.println("ETA: " + eta);
+
 		dm.updateDroneTimes(deliveryDrones, distance, dateTime);
 		w.update(requests.peek());
+		requests.poll();
+	}
+
+	public void executeSupply(Request r) {
+		wm.supply(r);
 		requests.poll();
 	}
 
