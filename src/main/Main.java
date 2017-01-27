@@ -69,7 +69,7 @@ public class Main {
 					if (deliveryDrones != null) {
 						String message = "Executing request from warehouse: ";
 						message += currentW.getId();
-						message += "\nStarting: " + currentReq.getDateTime();
+						message += "\nStarting: " + TimeConversion.convertToDate(currentReq.getDateTime() * 1000);
 						message += "\nUsing drones: ";
 						
 						

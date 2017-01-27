@@ -3,6 +3,7 @@ package main;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TimeZone;
 
 public class TimeConversion {
@@ -19,5 +20,11 @@ public class TimeConversion {
 		}
 		return unixtime;
 	}
+	
+	public static Date convertToDate(long unixTimeStamp)
+	{
+	    return new Date(unixTimeStamp);
+	}
+	
 
 }

@@ -6,6 +6,7 @@ import java.util.Queue;
 
 import drone.Drone;
 import drone.DroneManager;
+import main.TimeConversion;
 import warehouse.Warehouse;
 import warehouse.WarehouseManager;
 
@@ -38,7 +39,8 @@ public class RequestManager {
 
 	public void executeRequest(ArrayList<Drone> deliveryDrones, double distance, long dateTime, Warehouse w) {
 		long eta = dateTime + (long) (distance) * 60;
-		System.out.println("ETA: " + eta);
+		
+		System.out.println("ETA: " + TimeConversion.convertToDate(eta * 1000));
 
 		dm.updateDroneTimes(deliveryDrones, distance, dateTime);
 		w.update(requests.peek());
