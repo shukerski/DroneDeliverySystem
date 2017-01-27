@@ -15,7 +15,8 @@ public class Warehouse {
 
 	private Map<Integer, Product> productsIdToProduct;
 
-	public Warehouse(int x, int y) {
+	public Warehouse(int id,int x, int y) {
+		this.id = id;
 		this.productsIdToQuantity = new HashMap<>();
 		this.productsIdToProduct = new HashMap<>();
 		this.x = x;
