@@ -5,17 +5,27 @@ import java.util.Map;
 public class Request {
 	private int id;
 	private RequestType type;
+	private long dateTime;
 	private int reqX;
 	private int reqY;
 	private Map<Integer, Integer> productsToDeliver;
 
-	public Request(int id, RequestType type, int x, int y, Map<Integer, Integer> products) {
+	public Request(int id, RequestType type, long dateTime, int x, int y, Map<Integer, Integer> products) {
 		super();
 		this.id = id;
 		this.type = type;
+		this.dateTime = dateTime;
 		this.reqX = x;
 		this.reqY = y;
 		this.productsToDeliver = products;
+	}
+
+	public long getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(long dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public RequestType getType() {

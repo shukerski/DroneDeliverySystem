@@ -21,7 +21,7 @@ public class DroneManager {
 
 	public ArrayList<Drone> getDeliveryDrones(double distance, double weight, long time, int warehouseID) {
 		ArrayList<Drone> deliveryDrones = new ArrayList<>();
-		for (Drone drone : drones) {
+ 		for (Drone drone : drones) {
 			// todo available time
 			if (time > drone.getAvailableTime() && drone.getBattery() >= distance * 2 && drone.getWarehouseID() == warehouseID) {
 				deliveryDrones.add(drone);

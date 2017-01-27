@@ -1,7 +1,10 @@
 package requests;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 
+import drone.Drone;
 import drone.DroneManager;
 import warehouse.Warehouse;
 import warehouse.WarehouseManager;
@@ -13,6 +16,7 @@ public class RequestManager {
 	private WarehouseManager wm;
 
 	public RequestManager(WarehouseManager wm, DroneManager dm) {
+		requests = new LinkedList<>();
 		this.dm = dm;
 		this.wm = wm;
 	}
@@ -24,29 +28,18 @@ public class RequestManager {
 	public boolean hasRequests() {
 		return requests.isEmpty();
 	}
-	
-	public void executeRequest() {
-		
-		
+
+	public Request getRequest() {
+		if (!requests.isEmpty()) {
+			return requests.peek();
+		}
+		return null;
 	}
 
-//	public boolean canExecuteRequest() {
-//
-//		Request request = requests.poll();
-//
-//		Warehouse w = wm.checkWarehouses(request);
-//		double weight = 0, distance = 0;
-//		boolean canExecute = false;
-//		if (w != null) {
-//			distance = wm.calculateDistance(w, request.getX(), request.getY());
-//			weight = wm.calculateTotalWeight(w, request.getProductsToDeliver());
-//			canExecute = dm.canDeliver(distance, weight);
-//			if (canExecute) {
-//				w.update(request);
-//			}
-//		}
-//
-//		return canExecute;
-//	}
+	public void executeRequest(ArrayList<Drone> deliveryDrones, double distance, long dateTime, Warehouse w) {
+		dm.updateDroneTimes(deliveryDrones, distance, dateTime);
+		w.update(requests.peek());
+		requests.poll();
+	}
 
 }

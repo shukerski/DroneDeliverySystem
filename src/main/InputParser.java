@@ -30,7 +30,7 @@ public abstract class InputParser {
 				
 				
 				String date = parts[2] + " " + parts[3];
-				//Date
+				long dateTime = TimeConversion.convert(date);
 				
 				String coordinates = parts[4];
 				String[] coordParts = coordinates.split(",");
@@ -43,7 +43,7 @@ public abstract class InputParser {
 					products.put(Integer.valueOf(parts[i]), Integer.valueOf(Integer.valueOf((parts[i + 1]))));
 				}
 
-				return new Request(reqID,type, targetcoordX, targetcoordY, products);
+				return new Request(reqID,type,dateTime ,targetcoordX, targetcoordY, products);
 			} catch (Exception e) {
 				throw new IllegalArgumentException("Wrong request input");
 			}

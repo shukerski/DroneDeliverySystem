@@ -9,7 +9,7 @@ public class TimeConversion {
 	private static DateFormat dfm = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private static long unixtime;
 
-	public static long timeConversion(String time) {
+	public static long convert(String time) {
 		dfm.setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
 		try {
 			unixtime = dfm.parse(time).getTime();
